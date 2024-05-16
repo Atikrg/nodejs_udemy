@@ -3,6 +3,8 @@ const fs = require('fs');
 
 const app = express();
 
+app.use(express.json());
+
 /* app.get('/',(req, res)=>{
   res.status(200)
   .json({
@@ -11,6 +13,7 @@ const app = express();
   })
 })
  */
+
 
 
 const tours = JSON.parse(
@@ -26,6 +29,13 @@ app.get('/api/v1/tours', (req, res) => {
     }
   })
 })
+
+
+app.post('/api/v1/tours', (req, res) =>{
+  console.log(req.body)
+})
+
+
 
 const port = 3000;
 app.listen(port, () => {
