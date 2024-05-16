@@ -28,8 +28,29 @@ app.get('/api/v1/tours', (req, res) => {
       tours
     }
   })
+});
+
+
+
+//working with params
+app.get('/api/v1/tours/:id', (req, res)=>{
+  console.log(req.params);
+
+  res.status(200)
+  .json({
+    status: 'success',
+  })
 })
 
+//working with optional params
+app.get('/api/v1/tours/:id/:y?', (req, res)=>{
+  console.log(req.params);
+
+  res.status(200)
+  .json({
+    status: 'success',
+  })
+})
 
 app.post('/api/v1/tours', (req, res) => {
   const newId = tours[tours.length - 1].id + 1;
