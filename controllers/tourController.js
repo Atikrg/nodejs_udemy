@@ -38,7 +38,7 @@ exports.getAllTours = (req, res) => {
 };
 
 exports.getTour = (req, res) => {
- 
+  console.log(req.params);
 
   const id = req.params.id * 1; // convert into integer
   const tour = tours.find((el) => el.id === id);
