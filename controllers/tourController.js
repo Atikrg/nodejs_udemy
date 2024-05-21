@@ -5,6 +5,16 @@ const fs = require('fs');
 const router = express.Router();
 
 
+exports.checkBody = (req, res, next)=>{
+  console.log("check body ignited")
+  if(!req.body.name || !req.body.price){
+      return res.status(400).json({
+        status: 'fail',
+        message: 'missing name or price'
+      })
+  }
+  next();
+}
 
 exports.checkID = (req, res, next, val)=>{
   console.log(`Tour id for tour is ${val}`);
@@ -18,6 +28,8 @@ exports.checkID = (req, res, next, val)=>{
         }
         next();
 };
+
+
 
 
 
@@ -54,6 +66,7 @@ exports.getTour = (req, res) => {
 };
 
 exports.createTour = (req, res) => {
+  console.log("create tour ignited 🔥")
   const newId = tours[tours.length - 1].id + 1;
   const newTour = Object.assign({ id: newId }, req.body);
 
