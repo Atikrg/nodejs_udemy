@@ -1,8 +1,7 @@
 
 const express = require('express');
 const fs = require('fs');
-
-const router = express.Router();
+const Tour = require('./../models/tourModel')
 
 
 exports.checkBody = (req, res, next)=>{
@@ -16,27 +15,11 @@ exports.checkBody = (req, res, next)=>{
   next();
 }
 
-exports.checkID = (req, res, next, val)=>{
-  console.log(`Tour id for tour is ${val}`);
-    
-    if(req.params.id * 1 > tours.length)
-        {
-            return res.status(404).json({
-                status: 'fail',
-                message: 'Invalid ID'
-            });
-        }
-        next();
-};
 
 
-
-
-
-
-const tours = JSON.parse(
+/* const tours = JSON.parse(
     fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`)
-  );
+  ); */
 
 exports.getAllTours = (req, res) => {
   console.log(req.requestTime);
@@ -44,17 +27,17 @@ exports.getAllTours = (req, res) => {
   res.status(200).json({
     status: 'success',
     results: req.requestTime,
-    result: tours.length,
+    /* result: tours.length,
     data: {
       tours,
-    },
+    }, */
   });
 };
 
 exports.getTour = (req, res) => {
   console.log(req.params);
 
-  const id = req.params.id * 1; // convert into integer
+ /*  const id = req.params.id * 1; // convert into integer
   const tour = tours.find((el) => el.id === id);
 
   res.status(200).json({
@@ -62,11 +45,11 @@ exports.getTour = (req, res) => {
     data: {
       tour,
     },
-  });
+  }); */
 };
 
 exports.createTour = (req, res) => {
-  console.log("create tour ignited 🔥")
+ /*  console.log("create tour ignited 🔥")
   const newId = tours[tours.length - 1].id + 1;
   const newTour = Object.assign({ id: newId }, req.body);
 
@@ -84,7 +67,7 @@ exports.createTour = (req, res) => {
           },
         });
     }
-  );
+  ); */
 };
 
 exports.updateTour = (req, res) => {
