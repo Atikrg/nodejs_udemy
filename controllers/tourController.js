@@ -24,34 +24,7 @@ exports.getAllTours = async (req, res) => {
 
     let query = await Tour.find(JSON.parse(queryStr));
     
-    //2. Sorting
-    if (req.query.sort) {
-      console.log('getAllTours ignited 🔥');
-      
-      query = query.sort(req.query.sort);
-
-      //sort('price ratingAverage');
-    }
-
-    /*  console.log(queryObj) */
-
-    // {difficulty: 'easy', duration : {&gte: 5}}
-
-    //find all documents
-    /*       const tours = await Tour.find({
-        duration:5,
-        difficulty: 'easy'
-        
-      }
-    ); */
-
-    /*   const tours = await Tour.find()
-      .where('duration')
-      .equals(5)
-      .where('difficulty')
-      .equals('easy');
-      */
-    // EXECUTE QUERY
+    //EXECUTE QUERY
     const tours = await query;
 
     // SEND QUERY
